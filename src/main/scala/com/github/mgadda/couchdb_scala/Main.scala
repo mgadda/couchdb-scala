@@ -21,7 +21,7 @@ object Main {
           case Right(response) => response
           case Left(response) => DeepJSON(response)
         }
-      case Some(List("reset")) =>
+      case Some(List("reset", settings)) =>
         ViewServer.reset()
       case Some(List("map_doc", doc: Map[String, Any])) =>
         DeepJSON(ViewServer.map_doc(doc))
