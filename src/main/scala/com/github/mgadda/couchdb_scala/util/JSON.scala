@@ -1,5 +1,7 @@
 package com.github.mgadda.couchdb_scala.util
 
+import com.github.mgadda.couchdb_scala.MapResult
+
 object JSON {
   def apply(anything: Any): JSON = {
     anything match {
@@ -26,7 +28,11 @@ object JSON {
         new JSONArray(tuple9.productIterator.toList)
       case tuple10: Tuple10[_,_,_,_,_,_,_,_,_,_] =>
         new JSONArray(tuple10.productIterator.toList)
-      case None => new JSONNull
+      case mapResult: MapResult =>
+        new JSONArray(List(mapResult.key, mapResult.document))
+      case Some(value) => JSON(value)
+      case None => new JSONArray(List())
+      case null => new JSONNull
     }
   }
 }
