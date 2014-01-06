@@ -13,14 +13,14 @@ object Main {
   def executeCmd(cmd: String): Any = {
     JSON.parseFull(cmd) match {
       case Some(List("add_fun", fun: String)) =>
-        ViewServer.add_fun(fun) match {
+        ViewServer.addFunction(fun) match {
           case Right(response) => response
           case Left(response) => DeepJSON(response)
         }
       case Some(List("reset", settings)) =>
         ViewServer.reset()
       case Some(List("map_doc", doc: Document)) =>
-        DeepJSON(ViewServer.map_doc(doc))
+        DeepJSON(ViewServer.mapDocument(doc))
       case Some(List("reduce", reduceFuns: List[String], mapResults: List[Any])) =>
         DeepJSON(ViewServer.reduce(reduceFuns, mapResults))
       case Some(List("rereduce", rereduceFuns: List[String], reduceValues: List[Any])) =>

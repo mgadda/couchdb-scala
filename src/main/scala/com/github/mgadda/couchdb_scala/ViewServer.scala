@@ -13,7 +13,7 @@ object ViewServer {
 
   // Example:
   // ["add_fun", "(doc: Map[String, Any]) => { if (doc(\"score\").asInstanceOf[Double] > 50) { Some(List((None, Map(\"player_name\" -> doc(\"name\"))))) } else { None } }"]
-  def add_fun(fun: String): Either[Map[String, String], String] = {
+  def addFunction(fun: String): Either[Map[String, String], String] = {
 
     val funWithImports =
       s"""
@@ -34,7 +34,7 @@ object ViewServer {
 
   // Example:
   // ["map_doc", {"_id":"8877AFF9789988EE","_rev":"3-235256484","name":"John Smith","score": 60}]
-  def map_doc(doc: Document): List[Option[List[MapResult]]] = {
+  def mapDocument(doc: Document): List[Option[List[MapResult]]] = {
     viewFunctions.map(_(doc)).toList
   }
 
