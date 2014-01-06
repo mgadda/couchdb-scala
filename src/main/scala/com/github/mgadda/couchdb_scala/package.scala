@@ -5,10 +5,6 @@ package object couchdb_scala {
   val Document = Map
 
   case class MapResult(key: Option[String], document: Document)
-//  {
-//    def unapply(mapResult: MapResult): List[Any] =
-//      List(mapResult.key, mapResult.document)
-//  }
 
   type ViewFunction = (Document) => Option[List[MapResult]]
 }

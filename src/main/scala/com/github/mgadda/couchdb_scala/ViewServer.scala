@@ -4,12 +4,7 @@ import scala.collection.mutable
 import com.twitter.util.Eval
 
 object ViewServer {
-
   val viewFunctions = mutable.MutableList[ViewFunction]()
-
-  //type ViewFunction = (Map[String, Any]) => List[(Option[Any], Any)]
-
-
 
   def reset(): String = {
     viewFunctions.clear()
